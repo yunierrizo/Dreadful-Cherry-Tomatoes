@@ -8,7 +8,7 @@ function App() {
         <Router>
             <div className={styles.App}>
                 <Header />
-                <Home />
+                {/* <Home /> */}
             </div>
         </Router>
     )
