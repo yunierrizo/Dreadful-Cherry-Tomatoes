@@ -3,54 +3,54 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
-import Pagination from "@mui/material/Pagination";
+// import Pagination from "@mui/material/Pagination";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import styles from "../../Home.module.css";
-import DescriptionCard from "../DescriptionCard/DescriptionCard";
 
-const CardTitleStyles = {
-    background: "#000000de",
-    position: "absolute",
-    bottom: "0px",
-    color: "white",
-    width: "100%",
-    padding: "16px 0",
-};
-
-interface Movies {
-    entries: Array<{
-        description: string;
-        images: {
-            posterArt: {
-                width: number;
-                height: number;
-                url: string;
-            };
-        };
-        releaseYear: number;
-        title: string;
-    }>;
-}
-
-const MoviesGrid = () => {
-    const [movies, setMovies] = useState<Movies>();
+const MoviesGrid = ({ title, movies, setMovies }) => {
     const [open, setOpen] = useState({ movieIndex: null, open: false });
     // const perPage = 10;
 
     useEffect(() => {
-        axios
-            .get(process.env.REACT_APP_API_URI || "")
-            .then((response) => setMovies(response.data));
-    }, []);
+        axios.get(process.env.REACT_APP_API_URI || "").then((response) => {
+            if (title !== "") {
+                const array = [
+                    {
+                        description: "",
+                        images: {
+                            posterArt: {
+                                width: 0,
+                                height: 0,
+                                url: "",
+                            },
+                        },
+                        releaseYear: 0,
+                        title: "",
+                    },
+                ];
+
+                response.data.entries.find((item) => {
+                    if (
+                        item.title.toLowerCase().includes(title.toLowerCase())
+                    ) {
+                        array.push(item);
+                    }
+                });
+                array.shift();
+                setMovies({ entries: array });
+            } else {
+                setMovies(response.data);
+            }
+        });
+    }, [title]);
 
     const handleOpen = (index, open) => {
         // return <DescriptionCard open={true} description={movie.description} />;
         setOpen({ movieIndex: index, open: open });
     };
 
-    console.log(movies?.entries[0].description);
     return (
         <>
             <Grid

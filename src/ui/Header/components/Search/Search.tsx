@@ -9,7 +9,7 @@ const TextFieldStyles = {
     borderRadius: "5.57802px",
 };
 
-const Search = () => {
+const Search = ({ setTitle }) => {
     return (
         <div className={styles.search}>
             <TextField
@@ -24,6 +24,7 @@ const Search = () => {
                         </InputAdornment>
                     ),
                 }}
+                onChange={(e) => setTitle(e.target.value)}
                 fullWidth
             />
         </div>
