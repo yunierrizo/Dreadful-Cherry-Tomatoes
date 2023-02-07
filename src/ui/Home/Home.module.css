@@ -8,6 +8,33 @@
     margin: auto;
     max-width: 90vw;
     text-align: center;
+    margin-bottom: 100px;
+}
+
+.cardTitle {
+    background: #000000de;
+    position: absolute;
+    bottom: 0;
+    color: white;
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    padding: 16px 0 !important;
+    text-align: start;
+}
+
+.cardDescription {
+    background: #000000de;
+    position: absolute;
+    bottom: 0;
+    color: white;
+    /* width: 100%; */
+    padding: 16px 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: start;
 }
 
 @media (min-width: 1200px) {

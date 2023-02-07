@@ -4,19 +4,49 @@
 
 .header {
     align-items: center;
-    border-bottom: 1px solid #4FFAB6;
+    /* border-bottom: 1px solid #4ffab6; */
     color: white;
     display: flex;
     flex-direction: column;
     font-size: calc(1rem + 2vmin);
     justify-content: center;
     margin: auto;
-    max-width: 90vw;
+    /* max-width: 90vw; */
     text-align: center;
+    background-color: #000;
 }
 
-@media (min-width: 1200px) {
+.logo {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    align-self: start;
+    width: 100%;
+}
+
+.logo img {
+    height: 46px;
+    margin: 0 10rem;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    align-self: start;
+    width: 100%;
+    background-color: #c42521;
+    padding: 10px 0;
+}
+
+.search input {
+    /* background-color: white;
+ border-radius: 5.57802px; */
+    padding: 10px;
+    width: 100%;
+}
+
+/* @media (min-width: 1200px) {
     .header {
         max-width: 60vw;
     }
-}
+} */
